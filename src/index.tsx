@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Root from "./routes/root";
+import Error from "./Error";
 import {
     createBrowserRouter,
     RouterProvider
@@ -13,12 +14,14 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
+        errorElement: <Error />
     },
 ]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
