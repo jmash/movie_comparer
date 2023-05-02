@@ -8,7 +8,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.get('/test',
     (req: Express.Request, res: Express.Response) => {
         console.log(typeof(res));
-        //res.send({express: 'Test route connecting successfully'});
+        res.send({express: 'Test route connecting successfully'});
     });
 
 export {}; // included to comply with typescript standards regarding isolated modules
