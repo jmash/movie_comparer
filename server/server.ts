@@ -6,11 +6,12 @@ const app = Express();
 const port = process.env.SERVER_PORT || 5000;
 
 app.use(cors());
+dotenv.config();
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-const rapidAPIKey = process.env["X-RapidAPI-Key"];
-const rapidAPIHost = process.env["X-RapidAPI-Host"];
+const rapidAPIKey = process.env.RAPID_API_KEY;
+const rapidAPIHost = process.env.RAPID_API_HOST;
 
 // route for retrieving movie title
 app.get('/get-possible-titles/:title',
