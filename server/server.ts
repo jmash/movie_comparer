@@ -1,17 +1,16 @@
 import Express, { Request, Response, NextFunction } from 'express';
 import axios from 'axios';
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import cors from 'cors';
 const app = Express();
-const port = process.env.SERVER_PORT || 5000;
-
 app.use(cors());
-dotenv.config();
+dotenv.config({ path: require('find-config')('.env')});
+const port = process.env.SERVER_PORT || 5000;
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-const rapidAPIKey = process.env.RAPID_API_KEY;
-const rapidAPIHost = process.env.RAPID_API_HOST;
+const rapidAPIKey = process.env["X-RapidAPI-Key"];
+const rapidAPIHost = process.env["X-RapidAPI-Host"];
 
 // route for retrieving movie title
 app.get('/get-possible-titles/:title',
@@ -25,7 +24,7 @@ app.get('/get-possible-titles/:title',
             },
             headers: {
                 'X-RapidAPI-Key': rapidAPIKey,
-                'X-RapidAPI-Host': rapidAPIHost
+                'X-RapidAPI-Host':  rapidAPIHost
             }
         };
         
